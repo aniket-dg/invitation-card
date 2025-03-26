@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { 
   Carousel, 
@@ -8,17 +8,24 @@ import {
   CarouselNext, 
   CarouselPrevious 
 } from "@/components/ui/carousel";
+import useEmblaCarousel from 'embla-carousel-react';
+import Autoplay from 'embla-carousel-autoplay';
 
 const CoupleGallery = () => {
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    { loop: true, align: "center" },
+    [Autoplay({ delay: 4000, stopOnInteraction: false })]
+  );
+
   const images = [
-    "public/lovable-uploads/fc2468e6-02b8-42fc-a2e5-b13e4a6c5729.png",
-    "public/lovable-uploads/2ece22fb-8a78-4b23-b22a-cced23ed1316.png",
-    "public/lovable-uploads/ae2c9f95-2ea4-4bcd-aa1c-a2bbbf8cc3ad.png",
-    "public/lovable-uploads/f725ba7f-4042-487f-8eca-19ee302212aa.png",
-    "public/lovable-uploads/298adac9-61c7-4c72-a822-cdcbaa96c32e.png",
-    "public/lovable-uploads/0a120eb6-2b76-4b68-9507-ab45c05be5ba.png",
-    "public/lovable-uploads/854326d6-bbaa-4837-bcb5-bc397ba1496d.png",
-    "public/lovable-uploads/3488fef7-f8b7-4804-81c0-638a00d29d52.png"
+    "public/lovable-uploads/f0f5e2a8-0de4-4427-b055-0b742d64b858.png",
+    "public/lovable-uploads/334081c4-055b-43d7-88ff-f8213b49483f.png",
+    "public/lovable-uploads/ebc8ca28-db9d-4b64-857c-049eca7c99bd.png",
+    "public/lovable-uploads/f68d9120-2a9b-4b93-892a-b942e6890dde.png",
+    "public/lovable-uploads/2d70d9a3-0c2a-4eb1-a365-5390dad9141e.png",
+    "public/lovable-uploads/eb29f5c1-9f4c-4392-823f-d4f43af3ed66.png",
+    "public/lovable-uploads/268e69be-5d92-4d64-8947-91208f6f8db7.png",
+    "public/lovable-uploads/71d15647-8dc3-470e-80d2-0a105735a502.png"
   ];
 
   return (
@@ -30,26 +37,38 @@ const CoupleGallery = () => {
     >
       <h2 className="text-center text-2xl font-serif text-gray-800 mb-6">Our Journey Together</h2>
       
-      <Carousel className="w-full max-w-3xl mx-auto">
-        <CarouselContent>
-          {images.map((image, index) => (
-            <CarouselItem key={index}>
-              <div className="p-1">
-                <div className="overflow-hidden rounded-xl border border-wedding-gold/20 shadow-md">
-                  <img 
-                    src={image} 
-                    alt={`Anant and Yukta - Photo ${index + 1}`} 
-                    className="w-full aspect-[4/3] object-cover transition-transform duration-500 hover:scale-105" 
-                  />
-                </div>
-              </div>
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-        
-        <CarouselPrevious className="left-4 bg-white/80 border-wedding-gold/30 hover:bg-wedding-gold hover:text-white" />
-        <CarouselNext className="right-4 bg-white/80 border-wedding-gold/30 hover:bg-wedding-gold hover:text-white" />
-      </Carousel>
+      <div ref={emblaRef} className="overflow-hidden">
+        <Carousel className="w-full max-w-4xl mx-auto">
+          <CarouselContent>
+            {images.map((image, index) => (
+              <CarouselItem key={index}>
+                <motion.div 
+                  className="p-1"
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <div className="overflow-hidden rounded-xl border border-wedding-gold/20 shadow-lg">
+                    <motion.img 
+                      src={image} 
+                      alt={`Anant and Yukta - Photo ${index + 1}`} 
+                      className="w-full aspect-[4/3] object-cover"
+                      whileHover={{ 
+                        scale: 1.05,
+                        transition: { duration: 0.3 }
+                      }}
+                      loading="lazy"
+                    />
+                  </div>
+                </motion.div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          
+          <CarouselPrevious className="left-4 bg-white/80 border-wedding-gold/30 hover:bg-wedding-gold hover:text-white" />
+          <CarouselNext className="right-4 bg-white/80 border-wedding-gold/30 hover:bg-wedding-gold hover:text-white" />
+        </Carousel>
+      </div>
       
       <div className="divider mt-8"></div>
     </motion.div>
