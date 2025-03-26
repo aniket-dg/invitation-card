@@ -6,6 +6,11 @@ import EventDetails from '../components/EventDetails';
 import VenueMap from '../components/VenueMap';
 import RSVPSection from '../components/RSVPSection';
 import Footer from '../components/Footer';
+import CountdownTimer from '../components/CountdownTimer';
+import QRCodeSection from '../components/QRCodeSection';
+import HashtagGenerator from '../components/HashtagGenerator';
+import AnimatedBackground from '../components/AnimatedBackground';
+import InvitationScroll from '../components/InvitationScroll';
 
 const Index = () => {
   useEffect(() => {
@@ -19,8 +24,10 @@ const Index = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 1 }}
-      className="min-h-screen bg-wedding-ivory"
+      className="min-h-screen bg-wedding-ivory relative"
     >
+      <AnimatedBackground />
+      
       <div className="max-w-5xl mx-auto px-4 py-8">
         <motion.div 
           className="relative overflow-hidden bg-white bg-opacity-90 backdrop-blur-sm rounded-xl shadow-lg p-6 md:p-8 border border-wedding-gold/10 invitation-card"
@@ -29,8 +36,12 @@ const Index = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <InvitationHeader />
+          <InvitationScroll />
+          <CountdownTimer />
           <EventDetails />
           <VenueMap />
+          <QRCodeSection />
+          <HashtagGenerator />
           <RSVPSection />
           <Footer />
         </motion.div>
