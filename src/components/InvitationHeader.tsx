@@ -21,10 +21,18 @@ const InvitationHeader = () => {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.3, duration: 1 }}
       >
-        <h1 className="font-serif text-4xl md:text-6xl tracking-wide text-gray-800">
-          Anant <span className="text-wedding-gold">&</span> Yukta
+        <h1 className="font-serif text-4xl md:text-6xl tracking-wide text-gray-800 relative">
+          <span className="relative inline-block">
+            <span className="absolute -left-8 -top-4 text-wedding-gold opacity-70 text-xl">❦</span>
+            Anant
+          </span>
+          <span className="text-wedding-gold mx-2">&</span>
+          <span className="relative inline-block">
+            Yukta
+            <span className="absolute -right-8 -top-4 text-wedding-gold opacity-70 text-xl">❦</span>
+          </span>
         </h1>
-        <p className="text-gray-600 italic mt-4">
+        <p className="text-gray-600 italic mt-4 font-serif">
           Request the pleasure of your company as they celebrate their marriage
         </p>
       </motion.div>

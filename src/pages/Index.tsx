@@ -31,7 +31,7 @@ const Index = () => {
       
       <div className="max-w-5xl mx-auto px-4 py-8">
         <motion.div 
-          className="relative overflow-hidden bg-white bg-opacity-90 backdrop-blur-sm rounded-xl shadow-lg p-6 md:p-8 border border-wedding-gold/10 invitation-card"
+          className="relative overflow-hidden bg-white bg-opacity-90 backdrop-blur-sm rounded-xl shadow-lg p-6 md:p-8 border border-wedding-gold/20 invitation-card"
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
