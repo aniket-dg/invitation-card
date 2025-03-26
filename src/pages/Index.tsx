@@ -2,6 +2,7 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import InvitationHeader from '../components/InvitationHeader';
+import CoupleGallery from '../components/CoupleGallery';
 import EventDetails from '../components/EventDetails';
 import VenueMap from '../components/VenueMap';
 import RSVPSection from '../components/RSVPSection';
@@ -36,6 +37,7 @@ const Index = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <InvitationHeader />
+          <CoupleGallery />
           <InvitationScroll />
           <CountdownTimer />
           <EventDetails />
