@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/carousel";
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
+import { Sparkles } from 'lucide-react';
 
 const CoupleGallery = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel(
@@ -35,39 +36,53 @@ const CoupleGallery = () => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: 0.5 }}
     >
-      <h2 className="text-center text-2xl font-serif text-gray-800 mb-6">Our Journey Together</h2>
+      <h2 className="text-center text-2xl font-serif text-gray-800 mb-6 relative inline-flex items-center">
+        <Sparkles size={16} className="text-wedding-gold mr-2" />
+        Our Journey Together
+        <Sparkles size={16} className="text-wedding-gold ml-2" />
+      </h2>
       
-      <div ref={emblaRef} className="overflow-hidden">
-        <Carousel className="w-full max-w-4xl mx-auto">
-          <CarouselContent>
-            {images.map((image, index) => (
-              <CarouselItem key={index}>
-                <motion.div 
-                  className="p-1"
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  <div className="overflow-hidden rounded-xl border border-wedding-gold/20 shadow-lg">
-                    <motion.img 
-                      src={image} 
-                      alt={`Anant and Yukta - Photo ${index + 1}`} 
-                      className="w-full aspect-[4/3] object-cover"
-                      whileHover={{ 
-                        scale: 1.05,
-                        transition: { duration: 0.3 }
-                      }}
-                      loading="lazy"
-                    />
-                  </div>
-                </motion.div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          
-          <CarouselPrevious className="left-4 bg-white/80 border-wedding-gold/30 hover:bg-wedding-gold hover:text-white" />
-          <CarouselNext className="right-4 bg-white/80 border-wedding-gold/30 hover:bg-wedding-gold hover:text-white" />
-        </Carousel>
+      <div className="relative">
+        <div ref={emblaRef} className="overflow-hidden">
+          <Carousel className="w-full max-w-4xl mx-auto">
+            <CarouselContent>
+              {images.map((image, index) => (
+                <CarouselItem key={index}>
+                  <motion.div 
+                    className="p-1"
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <div className="overflow-hidden rounded-xl border border-wedding-gold/30 shadow-lg relative group">
+                      <motion.img 
+                        src={image} 
+                        alt={`Anant and Yukta - Photo ${index + 1}`} 
+                        className="w-full aspect-[4/3] object-cover transition-all duration-700"
+                        whileHover={{ 
+                          scale: 1.05,
+                          transition: { duration: 0.7 }
+                        }}
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+                    </div>
+                  </motion.div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            
+            <div className="absolute top-0 bottom-0 left-0 right-0 pointer-events-none">
+              <div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-wedding-gold/20 rounded-tl-lg"></div>
+              <div className="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-wedding-gold/20 rounded-tr-lg"></div>
+              <div className="absolute bottom-0 left-0 w-16 h-16 border-b-2 border-l-2 border-wedding-gold/20 rounded-bl-lg"></div>
+              <div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-wedding-gold/20 rounded-br-lg"></div>
+            </div>
+            
+            <CarouselPrevious className="left-4 bg-white/80 border-wedding-gold/30 hover:bg-wedding-gold hover:text-white transition-all duration-300" />
+            <CarouselNext className="right-4 bg-white/80 border-wedding-gold/30 hover:bg-wedding-gold hover:text-white transition-all duration-300" />
+          </Carousel>
+        </div>
       </div>
       
       <div className="divider mt-8"></div>

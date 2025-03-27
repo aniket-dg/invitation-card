@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
 
 @tailwind base;
@@ -105,61 +104,67 @@ html {
 
 /* Wedding Animation Elements */
 .rose-petal,
-.golden-sparkle {
+.golden-sparkle,
+.heart-shape {
   pointer-events: none;
   position: fixed;
   z-index: 1;
   top: -50px;
   animation-timing-function: ease-in-out;
-  animation-iteration-count: infinite;
 }
 
 .rose-petal {
-  width: 20px;
-  height: 25px;
+  width: 25px;
+  height: 30px;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23FFC0CB' d='M50,0 C70,25 90,40 50,100 C10,40 30,25 50,0'/%3E%3C/svg%3E");
-  animation-name: falling-petal;
-  animation-duration: 10s;
+  filter: drop-shadow(0 2px 3px rgba(0,0,0,0.1));
 }
 
 .golden-sparkle {
-  width: 15px;
-  height: 15px;
+  width: 20px;
+  height: 20px;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23D4AF37' d='M50,0 L63,38 L100,38 L69,61 L81,100 L50,77 L19,100 L31,61 L0,38 L37,38 Z'/%3E%3C/svg%3E");
-  animation-name: sparkle;
-  animation-duration: 8s;
+  filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.5));
 }
 
-@keyframes falling-petal {
-  0% {
-    transform: translateY(-10vh) translateX(0) rotate(0deg);
-    opacity: 0;
-  }
-  10% {
-    opacity: 1;
-  }
-  90% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(100vh) translateX(100px) rotate(720deg);
-    opacity: 0;
-  }
+.heart-shape {
+  width: 22px;
+  height: 22px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23D4AF37' stroke='none' d='M50,30 C50,30 35,10 20,10 C10,10 0,20 0,35 C0,70 50,90 50,90 C50,90 100,70 100,35 C100,20 90,10 80,10 C65,10 50,30 50,30 Z'/%3E%3C/svg%3E");
+  opacity: 0.7;
+  filter: drop-shadow(0 0 4px rgba(212, 175, 55, 0.5));
 }
 
-@keyframes sparkle {
-  0% {
-    transform: translateY(0) translateX(0) rotate(0deg) scale(0);
-    opacity: 0;
-  }
-  50% {
-    transform: translateY(50vh) translateX(50px) rotate(360deg) scale(1);
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(100vh) translateX(100px) rotate(720deg) scale(0);
-    opacity: 0;
-  }
+.bokeh-enhanced {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.6;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(212, 175, 55, 0.25) 0%, transparent 30%),
+    radial-gradient(circle at 30% 70%, rgba(255, 192, 203, 0.25) 0%, transparent 30%),
+    radial-gradient(circle at 60% 40%, rgba(212, 175, 55, 0.25) 0%, transparent 30%),
+    radial-gradient(circle at 80% 80%, rgba(255, 192, 203, 0.25) 0%, transparent 30%),
+    radial-gradient(circle at 40% 10%, rgba(212, 175, 55, 0.25) 0%, transparent 30%),
+    radial-gradient(circle at 90% 30%, rgba(255, 192, 203, 0.25) 0%, transparent 30%);
+  filter: blur(10px);
+}
+
+.royal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -2;
+  background-image: 
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cpath d='M20 0L22 18L40 20L22 22L20 40L18 22L0 20L18 18Z' fill='%23D4AF37' fill-opacity='0.03'/%3E%3C/svg%3E");
+  background-size: 80px 80px;
 }
 
 .scroll-animation {
@@ -197,11 +202,12 @@ html {
 
 .invitation-card {
   background-image: 
-    radial-gradient(circle at 20% 20%, rgba(212, 175, 55, 0.03) 0%, transparent 70%),
-    radial-gradient(circle at 80% 80%, rgba(212, 175, 55, 0.03) 0%, transparent 70%);
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+    radial-gradient(circle at 20% 20%, rgba(212, 175, 55, 0.05) 0%, transparent 70%),
+    radial-gradient(circle at 80% 80%, rgba(212, 175, 55, 0.05) 0%, transparent 70%);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08), 0 0 40px rgba(212, 175, 55, 0.07);
   position: relative;
   overflow: hidden;
+  border-image: linear-gradient(to right, rgba(212, 175, 55, 0.4), transparent, rgba(212, 175, 55, 0.4)) 1;
 }
 
 .invitation-card::before {
@@ -211,7 +217,7 @@ html {
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.5), transparent);
 }
 
 .invitation-card::after {
@@ -221,16 +227,35 @@ html {
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.5), transparent);
 }
 
 .divider {
   position: relative;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.5), transparent);
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.6), transparent);
   width: 100%;
   max-width: 200px;
   margin: 1.5rem auto;
+}
+
+.divider::before, .divider::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: rgba(212, 175, 55, 0.4);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.divider::before {
+  left: calc(50% - 70px);
+}
+
+.divider::after {
+  right: calc(50% - 70px);
 }
 
 .section-transition {

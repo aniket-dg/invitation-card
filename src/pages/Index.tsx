@@ -16,7 +16,7 @@ import InvitationScroll from '../components/InvitationScroll';
 const Index = () => {
   useEffect(() => {
     // Set title
-    document.title = "Anant & Yukta | Wedding Invitation";
+    document.title = "Anant & Yukta | Royal Wedding Invitation";
   }, []);
   
   return (
