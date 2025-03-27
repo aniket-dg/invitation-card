@@ -24,13 +24,13 @@ const RSVPSection = () => {
           whileHover={{ scale: 1.05 }}
           transition={{ type: "spring", stiffness: 400, damping: 10 }}
         >
-          <a 
-            href="tel:+917506900088" 
-            className="direction-button inline-flex items-center justify-center py-3 px-8 bg-wedding-gold/90 hover:bg-wedding-gold text-white rounded-md shadow-md"
-          >
-            <Heart className="h-4 w-4 mr-2" />
-            RSVP Now
-          </a>
+          {/*<a */}
+          {/*  href="tel:+917506900088" */}
+          {/*  className="direction-button inline-flex items-center justify-center py-3 px-8 bg-wedding-gold/90 hover:bg-wedding-gold text-white rounded-md shadow-md"*/}
+          {/*>*/}
+          {/*  <Heart className="h-4 w-4 mr-2" />*/}
+          {/*  RSVP Now*/}
+          {/*</a>*/}
         </motion.div>
       </div>
     </motion.section>

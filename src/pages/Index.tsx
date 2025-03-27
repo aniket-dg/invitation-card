@@ -37,8 +37,8 @@ const Index = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <InvitationHeader />
-          <CoupleGallery />
           <InvitationScroll />
+          <CoupleGallery />
           <CountdownTimer />
           <EventDetails />
           <VenueMap />

@@ -43,11 +43,11 @@ const EventDetails = () => {
             </div>
             <div className="flex items-center">
               <Clock className="text-wedding-gold mr-3 h-5 w-5" />
-              <span>Morning Ceremony</span>
+              <span>09:00 AM</span>
             </div>
             <div className="flex items-start">
               <MapPin className="text-wedding-gold mr-3 h-5 w-5 mt-1 flex-shrink-0" />
-              <span>Shiv Sagar Mangal Karyalaya, Gondur Airport Rd, Mangalmurti Colony, Dhule, Walwadi, Maharashtra 424002</span>
+              <span>House no 188, Hudco Colony, Jamner Road, Bhusawal, Jalgaon, Maharashtra 425201</span>
             </div>
           </div>
         </motion.div>

@@ -33,7 +33,7 @@ const InvitationHeader = () => {
           </span>
         </h1>
         <p className="text-gray-600 italic mt-4 font-serif">
-          Request the pleasure of your company as they celebrate their marriage
+          We warmly invite you to join us in celebrating our wedding and sharing in our joyous journey.
         </p>
       </motion.div>
     </motion.header>
