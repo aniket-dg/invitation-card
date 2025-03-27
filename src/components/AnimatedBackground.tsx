@@ -1,5 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 
 const AnimatedBackground = () => {
   const [elements, setElements] = useState<React.ReactNode[]>([]);
@@ -11,14 +12,14 @@ const AnimatedBackground = () => {
     // Add new elements periodically
     const interval = setInterval(() => {
       addNewElement();
-    }, 2000);
+    }, 1500);
     
     return () => clearInterval(interval);
   }, []);
   
   const createInitialElements = () => {
     const initialElements = [];
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 15; i++) {
       initialElements.push(createRandomElement(i));
     }
     setElements(initialElements);
@@ -28,7 +29,7 @@ const AnimatedBackground = () => {
     setElements(prevElements => {
       // Remove oldest elements if there are too many
       const updatedElements = [...prevElements];
-      if (updatedElements.length > 30) {
+      if (updatedElements.length > 40) {
         updatedElements.shift();
       }
       
@@ -39,19 +40,37 @@ const AnimatedBackground = () => {
   };
   
   const createRandomElement = (key: number) => {
-    const isRosePetal = Math.random() > 0.5;
+    // Give more variety to the animations
+    const elementType = Math.random();
+    const isRosePetal = elementType < 0.4;
+    const isGoldenSparkle = elementType >= 0.4 && elementType < 0.8;
+    const isHeartShape = elementType >= 0.8;
+    
     const randomLeft = Math.random() * 100;
     const randomDelay = Math.random() * 5;
-    const randomDuration = (Math.random() * 5) + 5;
+    const randomDuration = (Math.random() * 8) + 6;
+    const randomSize = Math.random() * 0.5 + 0.7; // Scale factor between 0.7 and 1.2
+    
+    let className = '';
+    if (isRosePetal) className = 'rose-petal';
+    else if (isGoldenSparkle) className = 'golden-sparkle';
+    else className = 'heart-shape';
     
     return (
-      <div
+      <motion.div
         key={key}
-        className={isRosePetal ? 'rose-petal' : 'golden-sparkle'}
+        className={className}
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ opacity: [0, 1, 1, 0], scale: [0, randomSize, randomSize, 0] }}
+        transition={{ 
+          duration: randomDuration,
+          times: [0, 0.1, 0.9, 1],
+          delay: randomDelay,
+          ease: "easeInOut"
+        }}
         style={{
           left: `${randomLeft}%`,
-          animationDelay: `${randomDelay}s`,
-          animationDuration: `${randomDuration}s`
+          transform: `rotate(${Math.random() * 360}deg)`
         }}
       />
     );
@@ -59,7 +78,8 @@ const AnimatedBackground = () => {
   
   return (
     <>
-      <div className="bokeh"></div>
+      <div className="bokeh-enhanced"></div>
+      <div className="royal-overlay"></div>
       {elements}
     </>
   );

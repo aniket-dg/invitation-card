@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Sparkles } from 'lucide-react';
 
 const InvitationHeader = () => {
   return (
@@ -11,7 +12,18 @@ const InvitationHeader = () => {
       transition={{ duration: 0.8, ease: "easeOut" }}
     >
       <div className="mb-4">
-        <span className="block text-wedding-gold text-sm tracking-widest uppercase">Wedding Invitation</span>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.2, duration: 0.8 }}
+          className="relative"
+        >
+          <span className="block text-wedding-gold text-sm tracking-widest uppercase font-medium relative">
+            <span className="absolute -left-4 top-0"><Sparkles size={14} className="text-wedding-gold/70" /></span>
+            Wedding Invitation
+            <span className="absolute -right-4 top-0"><Sparkles size={14} className="text-wedding-gold/70" /></span>
+          </span>
+        </motion.div>
         <div className="divider"></div>
       </div>
       
